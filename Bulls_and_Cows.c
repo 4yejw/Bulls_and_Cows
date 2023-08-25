@@ -1,3 +1,4 @@
+//20220802
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,10 +6,10 @@
 static int k1, k2, k3, k4, a1, a2, a3, a4,try_num=0,game_num=1,S=0,B=0,O=0,x;
 int* p = NULL;
 char yorn;
-//ÇÔ¼ö ¸®½ºÆ®
-void set_key();//Á¤´ä »õ·Î Á¤ÇÏ±â ÇÔ¼ö
-void is_this_right();//Á¤´äÀÔ·ÂÇÏ°í sbo È®ÀÎÇÏ±â 
-void mark_SBO();//SBOÆÇ´ÜÇÏ±â ÇÔ¼ö
+//í•¨ìˆ˜ ë¦¬ìŠ¤íŠ¸
+void set_key();//ì •ë‹µ ìƒˆë¡œ ì •í•˜ê¸° í•¨ìˆ˜
+void is_this_right();//ì •ë‹µì…ë ¥í•˜ê³  sbo í™•ì¸í•˜ê¸° 
+void mark_SBO();//SBOíŒë‹¨í•˜ê¸° í•¨ìˆ˜
 void mark_1();
 void mark_2();
 void mark_3();
@@ -17,33 +18,33 @@ void mark_4();
 
 main() {
 	while (1) {
-		printf("==================================%d¹øÂ° °ÔÀÓ==================================\n",game_num);
-		set_key();//Á¤´ä »õ·Î Á¤ÇÏ±â
+		printf("==================================%dë²ˆì§¸ ê²Œì„==================================\n",game_num);
+		set_key();//ì •ë‹µ ìƒˆë¡œ ì •í•˜ê¸°
 		x = 0, try_num = 0;
 		do {
 			S = 0, B = 0, O = 0;
 			try_num++;
 			printf("#%d------------------------", try_num);
-			is_this_right();//ÀÌ°Å ¸Â¾Æ¿ä?
+			is_this_right();//ì´ê±° ë§ì•„ìš”?
 		} while (*p==0);
-		printf("\nÁ¤´äÀÔ´Ï´Ù!\n");
-		printf("ÇÑ°ÔÀÓ ´õ?(y or n):");
+		printf("\nì •ë‹µì…ë‹ˆë‹¤!\n");
+		printf("í•œê²Œì„ ë”?(y or n):");
 		scanf(" %c", &yorn);
 		if (yorn == 'n')//no
-			break;//¹İº¹ break;
+			break;//ë°˜ë³µ break;
 		game_num++;
 	}
 	return 0;
 }
 
-//Á¤´ä »õ·Î Á¤ÇÏ±â ÇÔ¼ö
+//ì •ë‹µ ìƒˆë¡œ ì •í•˜ê¸° í•¨ìˆ˜
 void set_key() {
 	
 	srand((unsigned)time(NULL));
 	k1 = rand() % 10;
 	do {
 		k2 = rand() % 10;
-	}while (k1 == k2);//ÀÌ Á¶°Ç ÀÏ¶§ µ¿¾ÈÀº °è¼Ó ¹İº¹
+	}while (k1 == k2);//ì´ ì¡°ê±´ ì¼ë•Œ ë™ì•ˆì€ ê³„ì† ë°˜ë³µ
 	do {
 		k3 = rand() % 10;
 	}while((k1 == k3) || (k2 == k3)); 
@@ -53,10 +54,10 @@ void set_key() {
 	
 }
 
-//Á¤´äÀÔ·ÂÇÏ°í sbo È®ÀÎÇÏ±â 
+//ì •ë‹µì…ë ¥í•˜ê³  sbo í™•ì¸í•˜ê¸° 
 void is_this_right() {
 	printf("\n");
-	printf("Á¤´äÀ» ÀÔ·ÂÇÏ¼¼¿ä:");
+	printf("ì •ë‹µì„ ì…ë ¥í•˜ì„¸ìš”:");
 	scanf(" %d  %d  %d  %d", &a1, &a2, &a3, &a4);
 	mark_SBO();
 	p = &x;
@@ -64,7 +65,7 @@ void is_this_right() {
 		*p = 1;
 }
 
-//SBOÆÇ´ÜÇÏ±â 
+//SBOíŒë‹¨í•˜ê¸° 
 void mark_SBO() {
 	mark_1();
 	mark_2();
@@ -73,7 +74,7 @@ void mark_SBO() {
 	printf("S:%d B:%d O:%d\n", S, B, O);
 }
 
-//Ã¹¹øÂ° ¼ö a1ÆÇ´ÜÇÏ±â 
+//ì²«ë²ˆì§¸ ìˆ˜ a1íŒë‹¨í•˜ê¸° 
 void mark_1(){
 	if (a1 == k1)
 		S++;
@@ -86,7 +87,7 @@ void mark_1(){
 	else
 		O++;
 }
-//µÎ¹øÂ°¼ö a2ÆÇ´ÜÇÏ±â
+//ë‘ë²ˆì§¸ìˆ˜ a2íŒë‹¨í•˜ê¸°
 void mark_2() {
 	if (a2 == k2)
 		S++;
@@ -99,7 +100,7 @@ void mark_2() {
 	else
 		O++;
 }
-//¼¼¹øÂ°¼ö a3ÆÇ´ÜÇÏ±â
+//ì„¸ë²ˆì§¸ìˆ˜ a3íŒë‹¨í•˜ê¸°
 void mark_3() {
 	if (a3 == k3)
 		S++;
@@ -112,7 +113,7 @@ void mark_3() {
 	else
 		O++;
 }
-//³×¹øÂ°¼ö a4ÆÇ´ÜÇÏ±â
+//ë„¤ë²ˆì§¸ìˆ˜ a4íŒë‹¨í•˜ê¸°
 void mark_4() {
 	if (a4 == k4)
 		S++;
