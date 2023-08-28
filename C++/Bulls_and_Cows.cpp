@@ -60,7 +60,7 @@ void BullsandCows::SetAnswer() {
 	while ((number[4] == number[1]) || (number[4] == number[2]) || (number[4] == number[3]))
 		number[4] = rand() % 10;
 
-	cout << "    정답 : " << number[1] << number[2] << number[3] << number[4] << '\n';
+	cout <<'\n';
 }
 
 //정답을 추론
